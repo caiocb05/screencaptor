@@ -40,7 +40,7 @@ app.get('/screenshot', async (req, res) => {
     switch (os.platform()) {
       case 'win32':
         // For Windows
-        executablePath = '%ProgramFiles(x86)%\\Google\\Chrome\\Application\\chrome.exe';
+        executablePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
         break;
       case 'darwin':
         // For macOS
