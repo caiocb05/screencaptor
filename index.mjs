@@ -12,7 +12,9 @@ app.get('/', async (req, res) => {
    res.send(`
 
     <html>
-      <head></head>
+      <head>
+        <title>Screencaptor</title>
+      </head>
 
       <body>
         <h1>Welcome to Screencaptor</h1>
