@@ -48,7 +48,7 @@ app.get('/screenshot', async (req, res) => {
         break;
       case 'linux':
         // For Linux
-        executablePath = '/usr/bin/google-chrome-stable';
+        executablePath = '/usr/bin/chromium-browser';
         break;
       default:
         console.log(`Unsupported platform: ${os.platform()}`);
