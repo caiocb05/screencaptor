@@ -1,33 +1,14 @@
+// @ts-check
+
 import os from 'os';
 import puppeteer from 'puppeteer-core';
 import express from 'express';
+import { form } from './form.mjs'
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.get('/', async (req, res) => {
-  res.send(`
-
-    <html>
-      <head>
-        <title>Screencaptor</title>
-      </head>
-
-      <body>
-        <h1>Welcome to Screencaptor</h1>
-        <form action="screenshot">
-          <div>
-            URL: <input name="url" value="https://github.com/caiocb05" type="text">
-          </div>
-	  <div>
-	  Color: <input name="color" value="red" type="text">
-	  </div>
-          <input type="submit" value="Screencapture It!">
-        </form>
-      </body>
-    </html>
-  `);
-});
+app.get('/', form);
 
 app.get('/screenshot', async (req, res) => {
   const url = req.query.url; // Get the URL from the query string
@@ -66,12 +47,14 @@ app.get('/screenshot', async (req, res) => {
       height: 1080
     })
 
+    // @ts-ignore
     await page.goto(url);
 
     //await page.waitForSelector('.avatar-user');
 
 
     const result = await page.evaluate((color) => {
+      // @ts-ignore
       document.body.style.background = color || 'red';
       //document.querySelector('.avatar-user').style.filter = 'invert(1) !important';
     }, color);
